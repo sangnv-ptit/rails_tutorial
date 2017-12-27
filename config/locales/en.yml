@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+  layouts:
+    application:
+      title: " | Ruby on Rails Tutorial Sample App"
+  static_pages:
+    name: "Ruby on Rails Tutorial book"
+    home: "Home"
+    about: "About"
+    help: "Help"
+    contact: "Contact"
+    sample_app: "Sample App"

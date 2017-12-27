@@ -1,0 +1,8 @@
+<% provide :title, (t "static_pages.help") %>
+<h1><%= t "static_pages.help" %></h1>
+<p>
+  <%= link_to (t "static_pages.name"), "http://www.railstutorial.org/contact" %>
+  <%= link_to "http://www.railstutorial.org/book" do %>
+    <% content_tag :em, (t "static_pages.name") %>
+  <% end %>
+</p>

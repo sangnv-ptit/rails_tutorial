@@ -1,5 +1,8 @@
 {
   "name": "rails_tutorial",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.14.0"
+  }
 }

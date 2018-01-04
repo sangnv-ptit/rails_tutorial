@@ -1,4 +1,8 @@
-<% provide :title, (t "static_pages.home") %>
-<h1><%= t "static_pages.sample_app" %></h1>
-  <%= link_to (t "static_pages.name"), "http://www.railstutorial.org" %>
-</p>
+<div class="center jumbotron">
+  <% provide :title, (t "static_pages.home") %>
+  <h1><%= t "static_pages.sample_app" %></h1>
+  <h2><%= link_to (t "static_pages.name"), "http://www.railstutorial.org" %></h2>
+  <%= link_to t("users.signup_now"), signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+<%= link_to image_tag("rails.png", alt: "Rails logo"),
+  "http://rubyonrails.org/"%>

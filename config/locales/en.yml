@@ -40,4 +40,9 @@ en:
     about: "About"
     help: "Help"
     contact: "Contact"
+    news: "News"
+    login: "Log in"
     sample_app: "Sample App"
+  users:
+    signup: "Sign up"
+    signup_now: "Sign up now!"

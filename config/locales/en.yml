@@ -33,7 +33,9 @@ en:
   hello: "Hello world"
   layouts:
     application:
+      logo: "Rails logo"
       title: "Ruby on Rails Tutorial Sample App"
+      error: "error"
   static_pages:
     name: "Ruby on Rails Tutorial book"
     home: "Home"
@@ -46,3 +48,9 @@ en:
   users:
     signup: "Sign up"
     signup_now: "Sign up now!"
+  message:
+    content: "The form contains"
+    welcome: "Welcome to the Sample App!"
+  signup_page:
+    create: "Create my account"
+    confirmation: "Confirmation"

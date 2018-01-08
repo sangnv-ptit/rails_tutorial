@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180105072550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.integer "sex", limit: 1
+    t.integer "sex", limit: 1, default: 0, null: false
     t.date "dob"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

@@ -2,6 +2,10 @@
 @import 'bootstrap';
 
 $white: #fff;
+$gray-medium-light: #eaeaea;
+$gray-light: #bbb;
+$red: #f00;
+$black-blur: rgba(0, 0, 0, .07);
 
 // universal
 
@@ -74,7 +78,7 @@ p {
 
 footer {
   border-top: 1px solid $gray-light;
-  color: $gray-light;
+  color: $gray-medium-light;
   margin-top: 45px;
   padding-top: 5px;
 
@@ -98,5 +102,84 @@ footer {
       float: left;
       margin-left: 15px;
     }
+  }
+}
+
+// miscellaneous
+
+.debug_dump {
+  clear: both;
+  float: left;
+  margin-top: 45px;
+  width: 100%;
+}
+
+// sidebar
+
+aside {
+
+  section.user_info {
+    margin-top: 20px;
+  }
+
+  section {
+    margin-top: 20px;
+    padding: 10px 0;
+
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+
+    span {
+      display: block;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0;
+      text-align: left;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+// forms
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid $gray-light;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+input {
+  height: auto;
+}
+
+#error_explanation {
+  color: $red;
+
+  ul {
+    color: $red;
+    margin: 0 0 30px;
+  }
+}
+
+.field_with_errors {
+
+  .form-control {
+    color: $state-danger-text;
   }
 }

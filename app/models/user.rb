@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   enum sex: %i(male female).freeze
 
+  ATTR = %i(name email password sex dob password_confirmation)
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, presence: true,

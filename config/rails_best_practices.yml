@@ -19,7 +19,7 @@ NotRescueExceptionCheck: { }
 NotUseDefaultRouteCheck: { }
 NotUseTimeAgoInWordsCheck: { }
 OveruseRouteCustomizationsCheck: { customize_count: 3 }
-ProtectMassAssignmentCheck: { }
+ProtectMassAssignmentCheck: { ignored_files: "models/application_record.rb" }
 RemoveEmptyHelpersCheck: { }
 #RemoveTabCheck: { }
 RemoveTrailingWhitespaceCheck: { }
@@ -29,7 +29,11 @@ RemoveUnusedMethodsInControllersCheck: { except_methods: [
   "StaticPagesController#about",  
   "StaticPagesController#contact",
   "SessionsController#new",
-  "UsersController#new"
+  "SessionsController#create",
+  "SessionsController#destroy",
+  "UsersController#new",
+  "UsersController#create",
+  "UsersController#show"
 ]}
 RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }
 RemoveUnusedMethodsInModelsCheck: { except_methods: [] }

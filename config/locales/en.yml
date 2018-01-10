@@ -32,6 +32,11 @@
 en:
   hello: "Hello world"
   layouts:
+    header:
+      users: "Users"
+      profile: "Profile"
+      settings: "Settings"
+      account: "Account"
     application:
       logo: "Rails logo"
       title: "Ruby on Rails Tutorial Sample App"
@@ -44,13 +49,17 @@ en:
     contact: "Contact"
     news: "News"
     login: "Log in"
+    logout: "Log out"
     sample_app: "Sample App"
   users:
     signup: "Sign up"
     signup_now: "Sign up now!"
   message:
+    invalid: "Invalid email/password combination"
     content: "The form contains"
     welcome: "Welcome to the Sample App!"
   signup_page:
     create: "Create my account"
     confirmation: "Confirmation"
+  login_page:
+    new_user: "New user?"

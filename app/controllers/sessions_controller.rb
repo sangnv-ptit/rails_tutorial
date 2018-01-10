@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   def create
     session = params[:session]
     user = User.find_by email: session[:email].downcase
+
     if user && user.authenticate(session[:password])
       login_success user
     else
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 
@@ -20,6 +21,12 @@ class SessionsController < ApplicationController
 
   def login_success user
     log_in user
+
+    if params[:session][:remember_me] == Settings.remember
+      remember user
+    else
+      forget user
+    end
     redirect_to user
   end
 

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   enum sex: %i(male female).freeze
 
-  attr_reader :remember_token
+  attr_reader :remember_token, :activation_token
 
   ATTR = %i(name email password sex dob password_confirmation)
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -19,18 +19,24 @@ class User < ApplicationRecord
   has_secure_password
 
   before_save :downcase_email
+  before_create :create_activation_digest
 
-  def self.digest string
-    if ActiveModel::SecurePassword.min_cost
-      cost = BCrypt::Engine::MIN_COST
-    else
-      cost = BCrypt::Engine.cost
+  scope :active, ->{where activated: true}
+
+  class << self
+    def digest string
+      cost =
+      if ActiveModel::SecurePassword.min_cost
+        BCrypt::Engine::MIN_COST
+      else
+        BCrypt::Engine.cost
+      end
+      BCrypt::Password.create string, cost: cost
     end
-    BCrypt::Password.create string, cost: cost
-  end
 
-  def self.new_token
-    SecureRandom.urlsafe_base64
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
   end
 
   def remember
@@ -38,9 +44,10 @@ class User < ApplicationRecord
     update_attributes remember_digest: User.digest(remember_token)
   end
 
-  def authenticated? remember_token
-    return false unless remember_digest
-    BCrypt::Password.new(remember_digest).is_password? remember_token
+  def authenticated? attribute, token
+    digest = send "#{attribute}_digest"
+    return false unless digest
+    BCrypt::Password.new(digest).is_password? token
   end
 
   def forget
@@ -51,9 +58,18 @@ class User < ApplicationRecord
     self == user
   end
 
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
   private
 
   def downcase_email
     email.downcase!
+  end
+
+  def create_activation_digest
+    @activation_token = User.new_token
+    self.activation_digest = User.digest activation_token
   end
 end

@@ -20,18 +20,26 @@ class SessionsController < ApplicationController
   private
 
   def login_success user
-    log_in user
-
-    if params[:session][:remember_me] == Settings.remember
+    if user.activated?
+      log_in user
       remember user
     else
-      forget user
+      flash[:warning] = t "signup_page.activated_suggest"
+      redirect_to root_url
     end
-    redirect_back_or root_url
   end
 
   def login_fail
     flash.now[:danger] = t "message.invalid"
     render :new
+  end
+
+  def remember user
+    if params[:session][:remember_me] == "1"
+      remember user
+    else
+      forget user
+    end
+    redirect_back_or user
   end
 end

@@ -58,9 +58,21 @@ en:
     invalid: "Invalid email/password combination"
     content: "The form contains"
     welcome: "Welcome to the Sample App!"
+    update: "Profile updated"
+    login: "Please log in."
+    delete: "User deleted"
+    confirm: "You sure?"
   signup_page:
     create: "Create my account"
     confirmation: "Confirmation"
   login_page:
     new_user: "New user?"
-    remember_me: "Remember me on this computer"
+    remember_me: "Remember me on this computer"  
+  edit_page:
+    title: "Edit user"  
+    button: "Save changes"
+    header: "Update your profile"
+    change: "Change"
+  index_page:
+    title: "All users"
+    delete: "Delete"

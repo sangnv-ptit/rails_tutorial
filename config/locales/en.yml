@@ -65,6 +65,10 @@ en:
   signup_page:
     create: "Create my account"
     confirmation: "Confirmation"
+    activate_message: "Please check your email to activate your account."
+    activated_success: "Account activated!"
+    activated_fail: "Invalid activation link"
+    activated_suggest: "Account not activated. Check your email for the activation link."
   login_page:
     new_user: "New user?"
     remember_me: "Remember me on this computer"  
@@ -76,3 +80,8 @@ en:
   index_page:
     title: "All users"
     delete: "Delete"
+  mailer:
+    subject: "Account activation"
+    hi: "Hi"
+    content: "Welcome to the Sample App! Click on the link below to activate your account:"
+    activate: "Activate"

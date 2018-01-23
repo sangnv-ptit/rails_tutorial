@@ -6,3 +6,5 @@ password:
   minimum: 6
 gravatar:
   size: 50
+password_reset:
+  time: 2

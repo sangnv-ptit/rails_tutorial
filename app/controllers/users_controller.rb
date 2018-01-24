@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   def show
     redirect_to root_url unless user.activated?
+    @microposts = user.microposts.most_recent.paginate page: params[:page]
   end
 
   def edit; end
@@ -55,13 +56,6 @@ class UsersController < ApplicationController
     user.send_activation_email
     flash[:info] = t "signup_page.activate_message"
     redirect_to root_url
-  end
-
-  def logged_in_user
-    return if logged_in?
-    store_location
-    flash[:danger] = t "message.login"
-    redirect_to login_url
   end
 
   def admin_user

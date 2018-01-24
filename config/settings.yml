@@ -8,3 +8,8 @@ gravatar:
   size: 50
 password_reset:
   time: 2
+micropost:
+  picture_size: 5
+  max_length: 140
+picture:
+  accept: "image/jpeg,image/gif,image/png"

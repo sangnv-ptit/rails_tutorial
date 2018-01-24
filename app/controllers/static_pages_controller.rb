@@ -1,5 +1,10 @@
 class StaticPagesController < ApplicationController
-  def home; end
+  def home
+    return unless logged_in?
+    microposts = current_user.microposts
+    @micropost = microposts.build
+    @feed_items = microposts.most_recent.paginate page: params[:page]
+  end
 
   def help; end
 

@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require i18n.js
+//= require i18n/translations
 //= require bootstrap
 //= require rails-ujs
 //= require turbolinks

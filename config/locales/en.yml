@@ -93,7 +93,7 @@ en:
   forgot_password:
     title: "Forgot password"
     subject: "Password reset"
-    empty: "can't be emptyf"
+    empty: "can't be empty"
     button: "Submit"
   reset_password:
     title: "Reset password"  
@@ -102,3 +102,16 @@ en:
     content1: "This link will expire in two hours."
     content2: "If you did not request your password to be reset, please ignore this email and
 your password will stay as it is."
+  micropost:
+    post: "Posted "
+    ago: " ago."
+    create: "Micropost created!"
+    delete: "Micropost deleted"
+    feed: "Micropost Feed"
+    view_profile: "view my profile"
+    name: "micropost"
+    compose: "Compose new micropost..."
+    post: "Post"
+    picture_size: "should be less than 3MB"
+    warning: "Maximum file size is 3MB. Please choose a smaller file."
+    microposts: "Microposts"

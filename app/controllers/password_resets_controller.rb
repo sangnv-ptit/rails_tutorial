@@ -20,10 +20,14 @@ class PasswordResetsController < ApplicationController
   def edit; end
 
   def update
+    errors = user.errors
+
     if params[:user][:password].empty?
-      user.errors.add :password, t("forgot_password.empty")
-    else user.update_attributes user_params
+      errors.add :password, t("forgot_password.empty")
+    elsif user.update_attributes user_params
       reset_password_success user && return
+    else
+      errors.add :error, t("layouts.application.error")
     end
     render :edit
   end

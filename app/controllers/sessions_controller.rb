@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
   end
 
   def remember user
-    if params[:session][:remember_me] == "1"
+    if params[:session][:remember_me] == 1
       remember user
     else
       forget user

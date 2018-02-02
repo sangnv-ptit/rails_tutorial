@@ -29,3 +29,5 @@
 /.framgia-ci-result.temp.yml
 
 config/settings/*.yml
+
+/public/uploads

@@ -1,10 +1,12 @@
 class User < ApplicationRecord
-  enum sex: %i(male female).freeze
-
-  attr_reader :remember_token, :activation_token
-
   ATTR = %i(name email password sex dob password_confirmation)
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  attr_reader :remember_token, :activation_token, :reset_token
+  
+  enum sex: %i(male female).freeze
+
+  has_many :microposts, dependent: :destroy
 
   validates :name, presence: true,
     length: {maximum: Settings.name.maximum}
@@ -39,6 +41,10 @@ class User < ApplicationRecord
     end
   end
 
+  def password_reset_expired?
+    reset_sent_at < Settings.password_reset.time.hours.ago
+  end
+
   def remember
     @remember_token = User.new_token
     update_attributes remember_digest: User.digest(remember_token)
@@ -60,6 +66,16 @@ class User < ApplicationRecord
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def create_reset_digest
+    @reset_token = User.new_token
+    update_attributes reset_digest: User.digest(reset_token),
+      reset_sent_at: Time.zone.now
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
   end
 
   private

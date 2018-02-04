@@ -76,9 +76,9 @@ en:
   login_page:
     new_user: "New user?"
     remember_me: "Remember me on this computer"
-    forgot_password: "(forgot password)"  
+    forgot_password: "(forgot password)"
   edit_page:
-    title: "Edit user"  
+    title: "Edit user"
     button: "Save changes"
     header: "Update your profile"
     change: "Change"
@@ -96,7 +96,7 @@ en:
     empty: "can't be empty"
     button: "Submit"
   reset_password:
-    title: "Reset password"  
+    title: "Reset password"
     button: "Update password"
     content: "To reset your password click the link below:"
     content1: "This link will expire in two hours."
@@ -115,3 +115,12 @@ your password will stay as it is."
     picture_size: "should be less than 3MB"
     warning: "Maximum file size is 3MB. Please choose a smaller file."
     microposts: "Microposts"
+  stats:
+    following: "following"
+    follower: "followers"
+  button:
+    follow: "Follow"
+    unfollow: "Unfollow"
+  relationship:
+    following: "Following"
+    followers: "Followers"

@@ -7,8 +7,15 @@
         <%= @user.name %>
       </h1>
     </section>
+    <section class="stats">
+      <%= render "shared/stats", user: @user %>
+    </section>
   </aside>
   <div class="col-md-8">
+    <% if logged_in? %>
+      <%= render "follow_form", user: @user,
+        relationship_action: (@destroy_relationship || @create_relationship) %>
+    <% end %>
     <% if @user.microposts.any? %>
       <h3><%= t "micropost.microposts" %> (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i(index edit update destroy)
-  before_action :find_user, only: %i(show edit update destroy)
+  before_action :find_user,
+    only: %i(show edit update destroy following followers)
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: %i(destroy)
 
@@ -26,6 +27,10 @@ class UsersController < ApplicationController
 
   def show
     redirect_to root_url unless user.activated?
+    unless @destroy_relationship = current_user.active_relationships
+      .find_by(followed_id: user.id)
+      @create_relationship = current_user.active_relationships.build
+    end
     @microposts = user.microposts.most_recent.paginate page: params[:page]
   end
 

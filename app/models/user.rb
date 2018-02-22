@@ -1,11 +1,11 @@
 class User < ApplicationRecord
-  ATTR = %i(name email password sex dob password_confirmation)
+  ATTR = [:email, :password, :password_confirmation,
+    profile_attributes: Profile::ATTR]
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   attr_reader :remember_token, :activation_token, :reset_token
 
-  enum sex: %i(male female).freeze
-
+  has_one :profile, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id, dependent: :destroy
@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  validates :name, presence: true,
-    length: {maximum: Settings.name.maximum}
   validates :email, presence: true,
     length: {maximum: Settings.email.maximum},
     format: {with: VALID_EMAIL_REGEX},
@@ -30,6 +28,8 @@ class User < ApplicationRecord
   before_create :create_activation_digest
 
   scope :active, ->{where activated: true}
+
+  accepts_nested_attributes_for :profile
 
   class << self
     def digest string

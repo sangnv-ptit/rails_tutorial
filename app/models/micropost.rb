@@ -11,7 +11,7 @@ class Micropost < ApplicationRecord
   scope :most_recent, ->{order created_at: :desc}
   scope :following_microposts,
     ->(following_ids, user_id){where(user_id: following_ids)
-      .or(Micropost.where user_id: user_id)}
+      .or(where user_id: user_id)}
 
   mount_uploader :picture, PictureUploader
 

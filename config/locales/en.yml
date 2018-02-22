@@ -124,3 +124,6 @@ your password will stay as it is."
   relationship:
     following: "Following"
     followers: "Followers"
+  gender:
+    male: "Male"
+    female: "Female"

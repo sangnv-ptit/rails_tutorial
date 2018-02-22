@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     only: %i(show edit update destroy following followers)
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: %i(destroy)
+  before_action :load_genders, only: %i(new edit)
 
   attr_reader :user
 
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    user.build_profile
   end
 
   def create
@@ -77,5 +79,9 @@ class UsersController < ApplicationController
     return if user
     flash[:error] = t "layouts.application.error"
     redirect_to rool_url
+  end
+
+  def load_genders
+    @genders = Profile.sexes.keys
   end
 end
